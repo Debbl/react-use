@@ -40,8 +40,8 @@
   },
   "peerDependencies": {
     "birpc": ">=0.2.19",
-    "react": "catalog:",
-    "react-dom": "catalog:"
+    "react": ">=catalog:",
+    "react-dom": ">=catalog:"
   },
   "dependencies": {
     "use-rpc": "workspace:*"
