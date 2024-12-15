@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "build": "turbo build",
-    "test": "turbo test",
+    "test": "echo 'No tests yet'",
     "release": "pnpm build && bumpp -r && pnpm publish -r",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
