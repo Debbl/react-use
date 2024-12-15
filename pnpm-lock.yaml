@@ -50,6 +50,9 @@ importers:
       typescript:
         specifier: ^5.7.2
         version: 5.7.2
+      use-webworker:
+        specifier: ^1.0.0
+        version: 1.0.0(react@18.3.1)
       use-worker:
         specifier: ^0.0.1
         version: 0.0.1(react@18.3.1)
@@ -58,6 +61,22 @@ importers:
         version: 2.1.6(@types/node@22.10.1)
 
   packages/use-rpc:
+    devDependencies:
+      birpc:
+        specifier: ^0.2.19
+        version: 0.2.19
+      react:
+        specifier: 'catalog:'
+        version: 18.3.1
+      react-dom:
+        specifier: 'catalog:'
+        version: 18.3.1(react@18.3.1)
+
+  packages/use-web-worker:
+    dependencies:
+      use-rpc:
+        specifier: workspace:*
+        version: link:../use-rpc
     devDependencies:
       birpc:
         specifier: ^0.2.19
@@ -3350,6 +3369,12 @@ packages:
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
+
+  use-webworker@1.0.0:
+    resolution: {integrity: sha512-uWO3weuWIudrlAu5x2DW3l6qhPpc7YuHTGTCqpC/Qf/06Hv74LGBD7iX+/xjeCFK+DwaBTM/hGPNJ9olz1Gahw==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.0.0
 
   use-worker@0.0.1:
     resolution: {integrity: sha512-rT0k/l0dTJ7abRXhAv1cQ6txeUsB4fDOPUvRu9X9RtHfXousJMORibe6M9BEk+ZnYpidFLn5/x2pcqh5LPoJwQ==}
@@ -7340,6 +7365,10 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  use-webworker@1.0.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   use-worker@0.0.1(react@18.3.1):
     dependencies:
