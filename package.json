@@ -38,7 +38,7 @@
   "scripts": {
     "build": "turbo build",
     "test": "turbo test",
-    "release": "pnpm build && bumpp -r && pnpm publish",
+    "release": "pnpm build && bumpp -r && pnpm publish -r",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

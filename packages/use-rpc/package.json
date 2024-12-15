@@ -35,13 +35,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "pnpm build && node ./dist/index.cjs",
     "build": "tsup",
-    "test": "vitest",
-    "release": "pnpm build && bumpp && pnpm publish",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "test": "vitest"
   },
   "peerDependencies": {
     "birpc": ">=0.2.19",
