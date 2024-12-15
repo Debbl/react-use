@@ -1,0 +1,59 @@
+{
+  "name": "use-worker",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@9.14.4",
+  "description": "",
+  "author": "Brendan Dash <me@aiwan.run> (https://aiwan.run)",
+  "license": "MIT",
+  "homepage": "https://github.com/Debbl/react-use#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Debbl/react-use.git"
+  },
+  "bugs": "https://github.com/Debbl/react-use/issues",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "pnpm build && node ./dist/index.cjs",
+    "build": "tsup",
+    "test": "vitest",
+    "release": "pnpm build && bumpp && pnpm publish",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "birpc": ">=0.2.19",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "dependencies": {
+    "use-rpc": "workspace:*"
+  },
+  "devDependencies": {
+    "birpc": "^0.2.19",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  }
+}

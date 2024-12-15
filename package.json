@@ -1,0 +1,67 @@
+{
+  "name": "react-use",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.14.4",
+  "description": "",
+  "author": "Brendan Dash <me@aiwan.run> (https://aiwan.run)",
+  "license": "MIT",
+  "homepage": "https://github.com/Debbl/react-use#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Debbl/react-use.git"
+  },
+  "bugs": "https://github.com/Debbl/react-use/issues",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "test": "turbo test",
+    "release": "pnpm build && bumpp -r && pnpm publish",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepare": "simple-git-hooks"
+  },
+  "devDependencies": {
+    "@debbl/eslint-config": "^3.8.4",
+    "@types/node": "^22.10.1",
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2",
+    "bumpp": "^9.8.1",
+    "eslint": "^9.16.0",
+    "lint-staged": "^15.2.10",
+    "simple-git-hooks": "^2.11.1",
+    "tsup": "^8.3.5",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
