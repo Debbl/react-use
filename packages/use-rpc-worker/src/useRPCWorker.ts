@@ -2,11 +2,23 @@ import { createBirpc } from "birpc";
 import { useEffect, useRef } from "react";
 import type { BirpcOptions, BirpcReturn } from "birpc";
 
+export type WorkerScriptURL = Worker | URL | string;
+export type WorkerFn = () => WorkerScriptURL;
+export type WorkerOption = WorkerScriptURL | WorkerFn;
+
+function isWorkerFn(scriptURL: WorkerOption): scriptURL is WorkerFn {
+  return typeof scriptURL === "function";
+}
+
+function isWorker(scriptURL: WorkerOption): scriptURL is Worker {
+  return scriptURL instanceof Worker;
+}
+
 export function useRPCWorker<
-  WorkerFunctions extends Record<string, never>,
+  WorkerFunctions extends object = Record<string, never>,
   LocalFunctions extends object = Record<string, never>,
 >(
-  scriptURL: string | URL,
+  scriptURL: WorkerOption,
   localFunctions: LocalFunctions,
   options?: {
     rpc?: Omit<
@@ -19,7 +31,10 @@ export function useRPCWorker<
   const rpc = useRef<BirpcReturn<WorkerFunctions, LocalFunctions>>(undefined);
 
   useEffect(() => {
-    const worker = new Worker(scriptURL, options?.worker);
+    const script = isWorkerFn(scriptURL) ? scriptURL() : scriptURL;
+    const worker: Worker = isWorker(script)
+      ? script
+      : new Worker(script, options?.worker);
 
     rpc.current = createBirpc<WorkerFunctions, LocalFunctions>(localFunctions, {
       ...options?.rpc,
@@ -36,6 +51,6 @@ export function useRPCWorker<
   }, []);
 
   return {
-    rpc: rpc.current,
+    rpc,
   };
 }

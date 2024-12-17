@@ -3,8 +3,8 @@ import { useEffect, useRef } from "react";
 import type { BirpcOptions, BirpcReturn } from "birpc";
 
 export function useRPC<
-  RemoteFunctions extends Record<string, never>,
-  LocalFunctions extends Record<string, never>,
+  RemoteFunctions extends object = Record<string, never>,
+  LocalFunctions extends object = Record<string, never>,
 >(
   localFunctions: LocalFunctions,
   birpcOptions:
@@ -28,6 +28,6 @@ export function useRPC<
   }, []);
 
   return {
-    rpc: rpc.current,
+    rpc,
   };
 }

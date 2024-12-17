@@ -3,11 +3,11 @@ import { createRemote } from "use-rpc";
 import type { BirpcOptions } from "birpc";
 
 export function createWorker<
-  LocalFunctions extends Record<string, never>,
+  LocalFunctions extends object = Record<string, never>,
   WorkerFunctions extends object = Record<string, never>,
 >(
   functions: WorkerFunctions,
-  options: Omit<
+  options?: Omit<
     BirpcOptions<LocalFunctions>,
     "post" | "on" | "serialize" | "deserialize"
   >,
